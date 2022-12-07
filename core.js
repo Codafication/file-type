@@ -716,8 +716,9 @@ async function _fromTokenizer(tokenizer) {
 
 		const re = await readElement();
 		const docType = await readChildren(1, re.len);
+		const docTypeTrimmed = docType.replace('\u0000', '');
 
-		switch (docType) {
+		switch (docTypeTrimmed) {
 			case 'webm':
 				return {
 					ext: 'webm',
